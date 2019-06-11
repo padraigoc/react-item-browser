@@ -9,7 +9,7 @@ import {
 const searchForm = props => {
     return (
         <div>
-        <form onSubmit={props.getLocation}>
+        <form onSubmit={props.getPlaces}>
         <FormGroup>          
             <Label for="locationSearch">Enter Location</Label>
                 <Input
@@ -21,7 +21,7 @@ const searchForm = props => {
         <FormGroup>   
             <Label for="locationCategory">Select Category:</Label>
                 <Input type="select" name="locationSelect">
-                    <option>-- Please Select --</option>
+                    <option></option>
                     <option>Food</option>
                     <option>Drinks</option>
                     <option>Coffee</option>
