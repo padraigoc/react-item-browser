@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+    Navbar,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+  } from 'reactstrap';
 
-class index extends Component {
-    render() {
-        return (
-        <div>
+//creating a react statless component, we do not require state for now
+const index = () => {
+    return (
+         <div>
         <Navbar expand="md" color="light" light>
-
         <NavbarBrand href="/"><img src={require('./droppin.png')} alt="Trip Planner logo" width="100" height="80"/></NavbarBrand>
             <Nav navbar>
               <NavItem>
@@ -24,8 +23,7 @@ class index extends Component {
             </Nav>
         </Navbar> 
       </div>
-        );
-    }
-}
+    );
+};
 
 export default index;
