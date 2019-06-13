@@ -2,38 +2,34 @@ import React, { Component } from 'react';
 import Navbar from '../Navbar/navbar';
 import SearchForm from '../SearchForm/searchForm';
 import { Row, Col } from 'reactstrap';
-import axios from 'axios';
 
+import api from '../../lib/api';
 
-class index extends Component {
+class home extends Component {
 
-    
-    getPlaces = (event) => {
-        event.preventDefault();
-    
-        const location = event.target.elements.locationSearch.value;
-        const activity = event.target.elements.locationSelect.value;
-        
-        const endPoint = "https://api.foursquare.com/v2/venues/explore?";
-        const parameters = {
-            client_id: "XWLI1ZO0ZJNNOL11OAKT5IJE5D2MXEWE0TMWWPIAMWOUJZBM",
-            client_secret: "APSA24BZEQVQXHNECYEGKJ3QSC0SYQGPZIKDVYEDASLVMXMB",
-            query: activity,
-            near: location,
-            v: "20190610"
-        };
-    
-        let url = endPoint + new URLSearchParams(parameters);
-        console.log(url);
-        
-        axios.get(url)
-         .then(res => {
-            console.log("Response from foursquare: " + JSON.stringify(res))
-         })
-            .catch(error => {
-                 console.log("Error: " + error)
-         })  
+    state = {
+        venues : [],
+        venuePic : [],
     }
+    
+    searchSubmit = (event) => {
+        event.preventDefault();
+        
+        const location = event.target.elements.locationSearch.value;
+        const activity = event.target.elements.locationActivity.value;
+        
+        api.getPlaces(activity,location, (results) => {
+            let jsonResults = JSON.parse(JSON.stringify(results))
+
+            console.log("Response from server:")
+            console.log(jsonResults.data)
+            
+            this.setState({
+                    venues: jsonResults.data
+                    })
+                })
+            }
+
 
     render() {
         return (
@@ -43,7 +39,10 @@ class index extends Component {
                 <Col xs="6" sm="4"></Col>
 
                 <Col xs="6" sm="4">
-                <SearchForm getPlaces={this.getPlaces}/>
+                <SearchForm searchSubmit={this.searchSubmit}/>
+                {this.state.venues.map((resultItem, i) => {
+                    return <p key={i}>{resultItem.venue.name + " - " + resultItem.venue.location.city}</p>
+                } )}
                 </Col>
 
                 <Col sm="4"></Col>
@@ -53,4 +52,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default home;
