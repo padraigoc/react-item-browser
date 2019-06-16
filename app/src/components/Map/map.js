@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
 const MyMapComponent =
-    withScriptjs(withGoogleMap((props) =>
-        <GoogleMap zoom={props.zoom} center={props.mapView}>      
-            {props.dropPins
-                .map((pin, id) => (
-                    <Marker key={id} position={{ lat: pin.latitude, lng: pin.longitude }} /> ))
-            }
+    withScriptjs(withGoogleMap(props => (
+        <GoogleMap zoom={props.zoom} center={props.mapView}>       
+            {props.dropPins &&
+                 props.dropPins.filter(marker => marker.isVisible).map((marker, id) => {
+                 return (
+                    <Marker 
+                    //not working
+                    onClick={() => props.handlePinClick(marker)} 
+                    key={id} 
+                    position={{ lat: marker.latitude, lng: marker.longitude }}>            
+                        <InfoWindow>
+                           <p>{props.venues[id].venue.name}</p>
+                        </InfoWindow>     
+                    </Marker>    
+                    );
+            })}
         </GoogleMap>
     ))
+    );
+    
 
-class map extends Component {
+export default class map extends Component {
     render() {
         return (
             <MyMapComponent
@@ -26,4 +38,3 @@ class map extends Component {
     }
 }
 
-export default map;

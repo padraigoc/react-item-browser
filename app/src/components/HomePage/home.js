@@ -6,6 +6,7 @@ import { Row, Col } from 'reactstrap';
 //import { geolocated } from "react-geolocated";
 import api from '../../lib/api';
 
+
 class home extends Component {
 
     state = {
@@ -13,8 +14,14 @@ class home extends Component {
         venuePic: [],
         dropPins: [],
         mapView: { lat: 49.2827, lng: -123.1207 },
-        isGeolocationAvailable: '',
-        zoom: 12
+        // isGeolocationAvailable: '',
+        zoom: 12,
+    }
+
+    handlePinClick = (marker) => {
+        console.log(marker)
+        marker.isOpen = true;
+        this.setState=({ dropPins: Object.assign(this.state.dropPins,marker) });
     }
 
 
@@ -24,24 +31,23 @@ class home extends Component {
         const location = event.target.elements.locationSearch.value;
         const activity = event.target.elements.locationActivity.value;
 
-
         api.getPlaces(activity, location, (results) => {
-            //console.log(results);
 
             const center = results.data.geocode.center;
             const venues = results.data.groups[0].items;
 
-            const pins = results.data.groups[0].items.map((res) => {
+            const markers = results.data.groups[0].items.map(res => {
                 return {
                     latitude: res.venue.location.lat,
                     longitude: res.venue.location.lng,
-                    isVisable: true
+                    isOpen: true,
+                    isVisible: true,            
                 }
             })
             this.setState({
                 venues: venues,
                 mapView: center,
-                dropPins: pins,
+                dropPins: markers,
             }, function () {
                 console.log("Current state")
                 console.log(this.state);
@@ -52,12 +58,13 @@ class home extends Component {
 
     render() {
         return (
-            <div>
+            
+            <div style={{ backgroundImage: `url(https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80)` }}>
                 <Navbar /><br /><br />
-                <Row>
-                    <Col xs="6" sm="4"></Col>
 
-                    <Col xs="6" sm="4">
+                    <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+        
                         <SearchForm searchSubmit={this.searchSubmit} />
 
                         {this.state.venues.map((resultItem, i) => {
@@ -75,11 +82,10 @@ class home extends Component {
 
 
                         })}
-                    </Col>
-
-                    <Col sm="4"></Col>
+                </Col>
                 </Row>
-                <GoogleMap {...this.state} />
+                <br />
+                <GoogleMap {...this.state} handlePinClick={this.handlePinClick} />
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     Button,
+    ButtonGroup,
     FormGroup,
     Label,
     Input
@@ -18,6 +19,22 @@ const searchForm = props => {
                     placeholder="Enter a location to search for results"
                     /> <br />
         </FormGroup> 
+        <FormGroup>
+         <center>
+             <p>Quick Search</p>
+            
+            <ButtonGroup>
+            <Button >Food</Button>{' '}
+            <Button >Drinks</Button>{' '}
+            <Button  >Coffee</Button>{' '}
+            <Button >Shops</Button>{' '}
+            <Button >Arts</Button>{' '}
+            <Button >Outdoors</Button>{' '}
+            <Button >Sights</Button>{' '}
+            <Button >Trending</Button>{' '}
+            </ButtonGroup>
+            </center>
+        </FormGroup>
         <FormGroup>   
             <Label for="locationCategory">Select Category:</Label>
                 <Input type="select" name="locationActivity">

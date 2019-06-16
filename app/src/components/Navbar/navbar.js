@@ -3,8 +3,7 @@ import {
     Navbar,
     NavbarBrand,
     Nav,
-    NavItem,
-    NavLink,
+    NavItem
   } from 'reactstrap';
 
 //creating a react statless component, we do not require state for now
@@ -15,10 +14,7 @@ const index = () => {
         <NavbarBrand href="/"><img src={require('./droppin.png')} alt="Trip Planner logo" width="100" height="80"/></NavbarBrand>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/"><p>Home</p></NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/itinerary"><p>Itinerary</p></NavLink>
+                Activity Finder
               </NavItem>
             </Nav>
         </Navbar> 
