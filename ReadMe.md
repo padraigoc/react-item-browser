@@ -4,7 +4,7 @@ Single-page web application to help you find the most popular activites at any l
 
 Front-end is built using React.js, Back-end is built using Node.js with an Express Server. 
 
-This also uses extral APIS from Foursquare and Google Map, to display location and map information. 
+This also uses extral APIs from Foursquare and Google Map, to display location and map information. 
 
 You will need to obtain a Foursquare API key in order to run this project. 
 
@@ -52,10 +52,7 @@ Server:
 FS_CLIENT_ID=['insert Foursquare client id']
 FS_CLIENT_SECRET=['insert Foursquare client secret']
 
-As for Google API, please note that due to limits with API requests, the map may be greyed out. The API key used in this project can only be used on this app. 
-
-App:
-GOOGLE_MAPS_API=['insert google maps id']
+As for the Google API key, please note that due to limits with API requests, the map may be greyed out. The API key used in this project can only be used on this app. 
 
 4. Open two command windows and type the following to start: 
 
