@@ -6,8 +6,7 @@ class routes extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Route exact path="/" component={HomePage}/>
-                {/* <Route exact path="/place/" component={Place}/> */}
+                <Route exact path="/" component={HomePage}/>x
             </BrowserRouter>
         );
     }

@@ -17,7 +17,6 @@ getPlaces: async (activity,location,cb) => {
   try {
       await axios.get(`/search?activity=${activity}&location=${location}`) 
       .then(response => {
-        // console.log(response);
         return response;
       })
       .then(checkStatus)
