@@ -9,9 +9,9 @@ This also uses extral APIS from Foursquare and Google Map, to display location a
 You will need to obtain a Foursquare API key in order to run this project. 
 
 ### Screenshots
-![Screenshot of search form](images/searchform.png)
-![Screenshot of results](images/searchresults.png)
-![Screenshot of map](images/mapview.png)
+![Screenshot of search form](./Images/searchform.png)
+![Screenshot of results](./Images/searchresults.png)
+![Screenshot of map](./Images/mapview.png)
 
 ### Worflow Video
 [Available on Dropbox](https://www.dropbox.com/s/ou020hudpu37knb/screencast.mov?dl=0)
