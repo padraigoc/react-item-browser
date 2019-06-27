@@ -1,6 +1,6 @@
 ## Activity Finder 
 
-Single-page web application to help you find the most popular activites at any location. User can input any location, an activity (Such as Thai Food, bikingm, shopping) and the most popular results according to Foursquares API will return. 
+Single-page web application to help you find the most popular activites at any location. User can input any location, an activity (Such as Thai Food, biking, shopping) and the most popular results according to Foursquares API will return. 
 
 Front-end is built using React.js, Back-end is built using Node.js with an Express Server. 
 
